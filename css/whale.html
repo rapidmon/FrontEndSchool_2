@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whale</title>
+    <style>
+        /* animation */
+        @keyframes 오른쪽지느러미 {
+            from {
+                transform: rotate(-150deg);
+            }
+            to {
+                transform: rotate(-160deg);
+            }
+        }
+
+        @keyframes 왼쪽지느러미 {
+            from {
+                transform: rotate(-30deg);
+            }
+            to {
+                transform: rotate(-20deg);
+            }
+        }
+
+        @keyframes 꼬리 {
+            from {
+                transform: translateY(0)
+            }
+            to{
+                transform: translateY(10px);
+            }
+        }
+
+        /* css reset */
+        body, html, div{
+            margin: 0;
+            padding: 0;
+        }
+
+        :root{
+            --whale: rgb(0 162 232);
+        }
+
+        /* css style */
+        *,*::after,*::before{
+            box-sizing: border-box;
+        }
+
+        body{
+            background-image: url(./2943516477_6lpdTHoO_466d4460f89eb26d644ae95ce42c0e30.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        div{
+            border: 10px solid black;
+            margin: auto;
+        }
+
+        section{
+            position: relative;
+            height: auto;
+            width: 600px;
+            margin: 200px auto;
+        }
+
+        .tail{
+            width: 100px;
+            height: 100px;
+            background-color: var(--whale);
+            bottom: 230px;
+            z-index: -1;
+            animation: 꼬리 0.5s infinite alternate;
+            animation-delay: 0.5s;
+        }
+
+        .left_tail{
+            position: absolute;
+            border-radius: 11% 89% 0 100% / 10% 47% 53% 90%;
+            left: 200px;
+            border-right: 0;
+        }
+
+        .right_tail{
+            position: absolute;
+            border-radius: 89% 11% 100% 0 / 47% 10% 90% 53%;
+            right: 200px;
+            border-left: 0;
+        }
+        
+        .face{
+            z-index: -1;
+            width: 300px;
+            height: 250px;
+            background-color: var(--whale);
+            border-radius: 50% 50% 50% 50% / 88% 88% 12% 12%;
+        }
+        
+        .eye{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 100%;
+            top: 160px;
+        }
+
+        .left_eye{
+            left: 180px;
+        }
+
+        .right_eye{
+            right: 180px;
+        }
+
+        .stomach{
+            position: absolute;
+            width: 300px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50% 50% 50% 50% / 26% 26% 74% 74%;
+            left: 150px;
+            bottom: -35px;
+        }
+
+        .pin{
+            position: absolute;
+            bottom: 0;
+            width: 150px;
+            height: 100px;
+            background-color: var(--whale);
+            z-index: -2;
+            top: 240px;
+        }
+
+        .left_pin{
+            left: 50px;
+            transform: rotate(-30deg);
+            border-radius: 100% 0 20% 20%;
+            animation: 왼쪽지느러미 1s infinite alternate;
+            animation-delay: 1s;
+        }
+
+        .right_pin{
+            right: 50px;
+            transform: rotate(-150deg);
+            border-radius: 20% 20% 0% 100%;
+            animation: 오른쪽지느러미 1s infinite alternate;
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="tail left_tail"></div>
+        <div class="tail right_tail"></div>
+        <div class="face"></div>
+        <div class="eye left_eye"></div>
+        <div class="eye right_eye"></div>
+        <div class="stomach"></div>
+        <div class="pin left_pin"></div>
+        <div class="pin right_pin"></div>
+    </section>
+</body>
+</html>
