@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 설계 기법</title>
+    <style>
+        /* oocss방식 */
+        .btn {
+            width: 200px;
+            height: 80px;
+            font-size: 30px;
+        }
+
+        .btn-close {
+            background: black;
+            color: #fff;
+            border: 3px dotted #fff;
+        }
+
+
+        /* 종속 방식. oocss의 개요와 맞지 않다. 컨텐츠가 컨테이너에 종속되어 있는 모습 */
+        #main .btn {
+		width: 300px;
+        padding: 20px 10px;
+        margin: 10px;
+        font-size: 18px;
+        line-height: 1.5;
+        }
+
+        #main .general {
+            background-color: aquamarine;
+            color: black;
+        }
+
+        #main .warning {
+            background-color: azure;
+            color: blue;
+        }
+
+
+        /* 모듈 방식 */
+        .btn {
+            display: inline-block;
+            width: 300px;
+            padding: 20px 10px;
+            font-size: 18px;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: top;
+            color: #fff;
+            background-color: brown;
+        }
+
+        .btn.btn-small {
+            width: 80px;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .btn.btn-long {
+            width: 160px;
+        }
+
+        .tabnav {
+            display: flex;
+            margin: 20px;
+        }
+
+
+        /* 스테이트 방식(기존 스타일을 덮어쓰거나 확장하는데 사용) */
+        .tabnav li {
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+
+        .tabnav li:first-child {
+            border-left: 1px solid black;
+        }
+
+        .tabnav li a {
+            display: block;
+            padding: 10px 30px;
+            text-decoration: none;
+        }
+
+        .is-active {
+            background-color: blanchedalmond;
+        }
+
+        .is-active a {
+            pointer-events: none;
+            color: red;
+        }
+        .is-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="btn"></button>
+    <button type="button" class="btn btn-close"></button>
+
+    <main id="main">
+        <button type="button" class="btn general">기본 버튼</button>
+        <button type="button" class="btn warning">취소 버튼</button>
+    </main>
+
+    <button type="button" class="btn">그냥 버튼</button>
+    <button type="button" class="btn btn-small btn-long">아이디/비밀번호 찾기</button>
+    <button type="button" class="btn btn-small">로그인</button>
+
+    <ul class="tabnav">
+        <li class="is-active"><a href="">탭1</a></li>
+        <li><a href="">탭2</a></li>
+        <li><a href="">탭3</a></li>
+        <li class="is-hidden"><a href="">탭4</a></li>
+    </ul>
+
+    <p class="txt-grey">더 많은 정보가 필요하시면
+        <button class="txt-grey__btn">
+            <!-- <strong  class="txt-grey__btn__bold">여기</strong> 이렇게 네이밍 하지 않습니다. -->
+            <strong class="txt-grey__bold">여기</strong>
+        </button>
+        를 클릭하세요!
+    </p>
+
+    <!-- <nav class="nav-global--off"></nav> 잘못된 예 -->
+    <nav class="nav-global nav-global--off">
+        <a href="" class="nav-global__link"></a>
+        <a href="" class="nav-global__link"></a>
+    </nav>
+</body>
+</html>
