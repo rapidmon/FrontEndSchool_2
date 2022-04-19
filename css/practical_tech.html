@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practical technique</title>
+    <style>
+        body, html, li, ul, button, h2{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        h2{
+            margin: 30px;
+        }
+        .btn_select{
+            width: 200px;
+            height: 30px;
+            background: purple;
+            color: #fff;
+        }
+
+        .list_member{
+            display: none;
+            width: 200px;
+            height: 30px;
+        }
+
+        .list_member.on{
+            display: block;
+        }
+
+        .btn_select:active+.list_member{
+            display: block;
+        }
+
+        .list_member li{
+            height: 30px;
+            width: 200px;
+        }
+
+        .list-member li button {
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid black;
+            border-top: none;
+        }
+
+        .list-member li button:hover {
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <h2>select box 만들기</h2>
+    <button class="btn_select">당신의 최애 에스파 멤버는?</button>
+    <ul class="list_member">
+        <li><button type="button">카리나</button></li>
+        <li><button type="button">지젤</button></li>
+        <li><button type="button">닝닝</button></li>
+        <li><button type="button">윈터</button></li>
+    </ul>
+</body>
+<script>
+    const btn = document.querySelector('.btn_select')
+    const list = document.querySelector('.list_member')
+    btn.addEventListener('click', () => {
+        list.classList.toggle('on')
+    })
+    list.addEventListener('click', (e) => {
+        if(e.target.nodeName === "BUTTON"){
+            btn.textContent = e.target.textContent
+            list.classList.remove('on')
+        }
+    })
+</script>
+</html>
