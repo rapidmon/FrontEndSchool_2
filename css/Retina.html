@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retina</title>
+    <style>
+        a, section, h1{
+            padding: 0;
+            margin: 0;
+        }
+
+        .login_area{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1{
+            font-size: 19px;
+        }
+
+        .link{
+            position: relative;
+            width: 472px;
+            padding: 13.5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            color: #767676;
+            font-weight: 500;
+            font-size: 16px;
+            text-decoration: none;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .link::before{
+            position: absolute;
+            content: "";
+            display: block;
+            background-image: url(./image/css_sprites_retina.png);
+            background-size: 96px 96px;
+            background-repeat: no-repeat;
+            width: 28px;
+            height: 28px;
+            left: 5px;
+        }
+
+        .google{
+            margin-top: 20px;
+            border: 1px solid #767676;
+        }
+
+        .google::before{
+            background-position: -58px -10px;
+        }
+
+        .facebook{
+            border: 1px solid #2D9CDB;
+        }
+
+        .facebook::before{
+            background-position: -58px -58px;
+        }
+
+        .naver{
+            border: 1px solid #00BF18;
+        }
+
+        .naver::before{
+            background-position: -10px -58px;
+        }
+
+        .kakao{
+            border: 1px solid #F2C94C;
+        }
+
+        .kakao::before{
+            background-position: -10px -10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="login_area">
+        <h1>Retina란?<br>특정한 시야 거리에서 인간의 눈으로는 화소를 구분할 수 없는 화소 밀도(300 PPI가 넘을 경우)를 가진 애플 LCD 제품의 브랜드 이름</h1>
+        <a class="link google" href="">구글 계정으로 로그인</a>
+        <a class="link facebook" href="">페이스북 계정으로 로그인</a>
+        <a class="link naver" href="">네이버 계정으로 로그인</a>
+        <a class="link kakao" href="">카카오톡 계정으로 로그인</a>
+    </section>
+</body>
+</html>
