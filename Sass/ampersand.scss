@@ -1,0 +1,27 @@
+.box{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    transition: all 0.5s;
+    &:hover{
+        background-color: green;
+    }
+    &:last-child {
+        border-bottom: 2px solid black;
+    }
+}
+
+.box {
+    &-yellow {
+        background: #ff6347;
+    }
+    &-red {
+        background: #ffd700;
+    }
+    &-green {
+        background: #9acd32;
+    }
+}
+// .box:hover{
+//     background-color: green;
+// }

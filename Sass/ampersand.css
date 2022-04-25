@@ -1,0 +1,28 @@
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.box:hover {
+  background-color: green;
+}
+
+.box:last-child {
+  border-bottom: 2px solid black;
+}
+
+.box-yellow {
+  background: #ff6347;
+}
+
+.box-red {
+  background: #ffd700;
+}
+
+.box-green {
+  background: #9acd32;
+}
+/*# sourceMappingURL=ampersand.css.map */

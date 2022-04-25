@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAQE,AAAA,IAAI,CAAC;EACH,SAAS,EAPC,SAAe;CAQ1B",
+    "sources": [
+        "while.scss"
+    ],
+    "names": [],
+    "file": "while.css"
+}

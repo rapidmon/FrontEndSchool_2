@@ -1,0 +1,16 @@
+.one {
+  color: red;
+}
+
+.one .two {
+  color: red;
+}
+
+.one {
+  color: red;
+}
+
+.two {
+  color: red;
+}
+/*# sourceMappingURL=scope.css.map */
