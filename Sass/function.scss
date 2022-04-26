@@ -1,0 +1,21 @@
+@function pow($value) {
+    $value: $value * $value + px;
+    @return $value
+}
+
+.box {
+    width: pow(10);
+}
+
+@function pow_2($base, $exponent) { 
+    $result: 1;
+    @for $_ from 1 through $exponent {
+      $result: $result * $base;
+    }
+    @return $result;
+  }
+  
+  .sidebar {
+    float: left;
+    margin-left: pow_2(4, 3) * 1px;
+  }
