@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 문자열 (String)
+
+        let txt = 'ABCDEFGHIJKLMNABC';
+        let text_two = 'mom said \'hello world\'';
+        let text_three = "mom said 'hello world'";
+        let number = '100';
+
+        document.write(number + number, '<br>');
+        document.write(Number(number) + Number(number), '<br>');
+        document.write(parseInt(number) + parseInt(number), '<br>');
+        document.write(+number + +number, '<br>');
+
+        document.write(`txt : ${txt}<br>`);
+        // 문제 : 100 + 100 = 200이라고 출력을 해주세요.
+        document.write(`100 + 100 = 200<br>`);
+        document.write(`${number} + ${number} = ${number * 2} <br>`);
+
+        document.write(`txt.length : ${txt.length}<br>`);
+        document.write(`txt[1] : ${txt[1]}<br>`);
+
+        document.write(txt.indexOf("F"), '<br>');
+        // indexOf는 정규 표현식을 허용 X
+        document.write(`txt.indexOf("F") : ${txt.indexOf("F")}<br>`);
+        document.write(`txt.search("F") : ${txt.search("F")}<br>`);
+
+        document.write(`txt.indexOf("FG") : ${txt.indexOf("F")}<br>`);
+        document.write(`txt.search("FG") : ${txt.search("F")}<br>`);
+
+        document.write(`txt.indexOf("Z") : ${txt.indexOf("Z")}<br>`);
+        document.write(`txt.search("Z") : ${txt.search("Z")}<br>`);
+
+        let regExp = /CD/;
+        // document.write(`txt.indexOf(regExp) : ${txt.indexOf(regExp)}`);
+        document.write(`txt.search(regExp) : ${txt.search(regExp)}`);
+
+        document.write(`txt.lastIndexOf`)
+        
+        //문맥을 봐야 합니다.
+        // document.write(number + number, '<br>');
+        // document.write(number + 10, '<br>');
+        // document.write(number - 10, '<br>');
+        // document.write(number * 10, '<br>');
+
+        // document.write(typeof(number), '<br>');
+        // document.write(typeof(+number), '<br>');
+        // document.write(typeof(null), '<br>'); // 심각
+        // document.write(typeof(NaN), '<br>'); // 심각
+        // document.write(typeof(Infinity), '<br>');
+        // document.write(typeof([]), '<br>'); // 심각
+        // document.write(typeof({}), '<br>');
+        // document.write(typeof(''), '<br>');
+        // document.write(typeof(0), '<br>');
+
+        // console.log(0 + '');
+        // console.log(Infinity + '');
+        // console.log(true + '');
+        // console.log({} + ''); // 심각
+        // console.log(({}) + ''); // 심각
+        // console.log([] + ''); // 심각
+        // console.log([1, 2, 3, 4] + ''); // 심각
+        document.write(`1. ${'0' == 0}<br>`);
+        document.write(`2. ${'0' === 0}<br>`);
+        document.write(`3. ${false == 0}<br>`);
+        document.write(`4. ${false === 0}<br>`);
+        document.write(`5. ${true == 1}<br>`);
+        document.write(`6. ${false == '0'}<br>`);
+        document.write(`7. ${false == 'false'}<br>`);
+        document.write(`8. ${0 == ''}<br>`); // 주의
+        document.write(`9. ${false == ''}<br>`); // 주의
+        document.write(`10. ${false == null}<br>`); // 주의
+        document.write(`11. ${false == undefined}<br>`); // 주의
+        document.write(`12. ${NaN == NaN}<br>`); // false 주의
+        document.write(`13. ${NaN === NaN}<br>`); // false 주의
+        document.write(`14. ${isNaN(undefined)}<br>`); // true 주의
+        document.write(`15. ${isNaN(null)}<br>`); // false 주의
+        document.write(`16. ${isNaN(NaN)}<br>`); // true 주의
+        document.write(`17. ${Number.isNaN(undefined)}<br>`); // true 주의
+        document.write(`18. ${Number.isNaN(null)}<br>`); // true 주의
+        document.write(`19. ${Number.isNaN(NaN)}<br>`); // true 주의
+        document.write(`20. ${![]}<br>`); // false 주의
+        document.write(`21. ${!{}}<br>`); // false 주의
+
+        if ([]) {
+            document.write('hello world 1');
+        }
+        if ({}) {
+            document.write('hello world 2');
+        }
+        if ('') {
+            document.write('hello world 3');
+        }
+        if (undefined) {
+            document.write('hello world 4');
+        }
+
+        console.log('----------------');
+        console.log(`1 ${!!undefined}`);
+        console.log(`2 ${!!null}`);
+        console.log(`3 ${!!NaN}`);
+        console.log(`4 ${!!Infinity}`);
+        console.log(`5 ${!![]}`); // 주의
+        console.log(`6 ${!!{}}`); // 주의
+        console.log(`7 ${!!''}`); // 주의
+        console.log(`8 ${!!0}`);
+        console.log(`9 ${!!'hello world'}`);
+        console.log(`10 ${!!-100}`);
+
+        console.log('----------------');
+        console.log('드모르간 법칙');
+
+        // or : ||
+        // and : &&
+        const x = 0;
+        const y = 1;
+        console.log(!(x || y) === (!x && !y));
+        console.log(!(x && y) === (!x || !y));
+    </script>
+</body>
+
+</html>
