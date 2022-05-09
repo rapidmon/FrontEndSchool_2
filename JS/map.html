@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+</body>
+<script>
+    let word = 'hello world'
+    console.log(word.split('').reverse().reduce((a,b)=>a+b)) //뒤집기
+    console.log(word.split('').filter(x=>x=='l').length) //l의 갯수 찾기
+
+    let data = [
+    {회원번호:0, 아이디:'a', 성별:'남', 나이:21},
+    {회원번호:1, 아이디:'b', 성별:'남', 나이:17},
+    {회원번호:2, 아이디:'c', 성별:'여', 나이:6},
+    {회원번호:3, 아이디:'d', 성별:'여', 나이:55}
+    ]
+    console.log(data.map(i=> i['나이']).filter(x=> x>=20)) //20세 이상의 나이 찾기
+
+    let txt = '12390812476'
+    console.log(txt.split('').reduce((a,b) => (+a)+(+b))) //텍스트 내의 숫자 합하기
+    console.log(Math.round(txt.split('').reduce((a,b) => (+a)+(+b))/txt.split('').length))
+    //숫자 평균 반올림하기
+
+    console.log(Array(100).fill(1).map((value, index)=>value+index).filter(x=> x%2==0).reduce((a,b)=>a+b)) //1부터 100까지 짝수 더하기
+
+    console.log(Array(100).fill(0).map((value, index)=>value+index).join('').split('').filter(x=> x=='8').length) //1부터 100까지 나오는 8의 갯수 구하기
+</script>
+</html>
