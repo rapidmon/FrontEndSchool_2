@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴판</title>
+    <style>
+        #menuselector{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            margin: 1em;
+            margin-left: 0;
+        }
+
+        li button{
+            width: 8em;
+        }
+
+        article{
+            width: 25em;
+            margin: 1em;
+            padding: 2em;
+            padding-top: 0.1em;
+            padding-bottom: 0.5em;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .lunchmenu {
+            background-image: url(../images/pngwing.com.png);
+            background-repeat: no-repeat;
+            background-position: 210px center;
+            background-size: 210px auto;
+            background-color: beige;
+        }
+
+        .dinnermenu {
+            background-image: url(../images/pngwing.com.png);
+            background-repeat: no-repeat;
+            background-position: 210px center;
+            background-size: 210px auto;
+            background-color: beige;
+        }
+        .maincolor{
+            margin: 2em;
+        }
+        .lightblue{
+            background-color: lightblue;
+        }
+        .lightpink{
+            background-color: lightpink;
+        }
+        .lightgreen{
+            background-color: lightgreen;
+        }
+
+        .maincolor{
+            padding: 0 1em;
+            border-radius: 10px;
+            border: 1px solid #cdcdcd;
+        }
+
+        .maincolor:nth-child(1){
+            background-color: lightblue;
+        }
+        
+        .maincolor:nth-child(2){
+            background-color: lightgreen;
+        }
+        
+        .maincolor:nth-child(3){
+
+            
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <button class="maincolor">lightblue</button><button class="maincolor">lightgreen</button><button class="maincolor">lightpink</button>
+    <main id="menuselector">
+        <article id="container" class="lunchmenu">
+            <h2>점심 식단</h2>
+            <ul>
+                <li><button class="menu lunchmenu1">탕수육</button></li>
+                <li class="item-second"><button class="menu lunchmenu2">유산슬</button></li>
+                <li><button class="menu lunchmenu3">짜장면</button></li>
+            </ul>
+        </article>
+        <article class="dinnermenu">
+            <h2>저녁 식단</h2>
+            <ul>
+                <li><button class="menu dinnermenu1">된장찌개</button></li>
+                <li class="item-second"><button class="menu dinnermenu2">김치찌개</button></li>
+                <li><button class="menu dinnermenu3">해장국</button></li>
+            </ul>
+        </article>
+    </main>
+</body>
+<script>
+    const $item = document.getElementsByClassName('item-second');
+    console.log($item[0].textContent);
+    const $list = document.getElementById('container');
+    console.log($list.childNodes[3].childNodes[1].textContent);
+
+    const $button = document.getElementsByClassName('menu');
+    for(let i=0; i<$button.length; i++){
+        $button[i].addEventListener('click', function(e){
+            let String = e.target.classList[1];
+            document.getElementsByClassName(`${String.substr(0,String.length-1)}`)[0].style.backgroundImage = `url(../images/${String}.jpg)`;
+        })
+    }
+
+    const $colorChange = document.getElementsByClassName('maincolor');
+    for(let i=0; i<$colorChange.length; i++){
+        $colorChange[i].addEventListener('click', function(e){
+            const $menuSelector = document.getElementById('menuselector');
+            $menuSelector.classList.remove('lightblue', 'lightpink', 'lightgreen');
+            $menuSelector.classList.add(`${e.target.textContent}`);
+        })
+    }
+</script>
+</html>
