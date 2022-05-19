@@ -34,13 +34,17 @@
         <button type="submit" class="submit">제출</button>
     </form>
     <hr>
-    <h1>List of things to buy</h1>
-    <ol class="buylist">
-        <li class="list">cart<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
-        <li class="list">paint<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
-        <li class="list">bed<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
-    </ol>
-    <button class="add" type="button">add</button>
+    <article class="propagation">
+        <h2>List of things to buy</h2>
+        <ol class="buylist">
+            <li class="list">cart<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
+            <li class="list">paint<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
+            <li class="list">bed<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>
+        </ol>
+        <button class="add" type="button">add</button>
+    </article>
+    <hr>
+    <button type="button" class="propagation_btn">propagation</button
 </body>
 <script>
     //픽토그램
@@ -86,10 +90,19 @@
     //buy list
     const $add_btn = document.querySelector(".add");
     const $buy_list = document.querySelector(".buylist");
+    const $for_propagation = document.querySelector(".propagation")
     
     $add_btn.addEventListener("click", function(e){
         let add_list = prompt('Enter your buy list', '');
-        $buy_list.insertAdjacentHTML("beforeend", `<li class="list">${add_list}<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>`);
+        if(add_list){
+            $buy_list.insertAdjacentHTML("beforeend", `<li class="list">${add_list}<span class="tab">&#9;</span><button class="delete" type="button">delete</button></li>`);
+        }
+    })
+
+    $for_propagation.addEventListener("click", (e) => {
+        if(e.target.nodeName == "LI"){
+            alert(`${e.target.childNodes[0].textContent}`);
+        }
     })
     
     $buy_list.addEventListener("click", function(e){
@@ -100,16 +113,27 @@
             }
         }
     })
-    
-    const $list = document.querySelectorAll(".list");
-    
-    for(let i =0; i<$list.length; i++){
-        //for문 안에서 eventlistener를 주는 것은 메모리를 잡아먹는다. 안 좋은 코드.
-        $list[i].addEventListener("click", function(e){
-            if(e.target.childNodes.length != 1){
-                alert(`${e.target.childNodes[0].textContent}`);
-            }
-        })
-    }
+
+    // const $list = document.querySelectorAll(".list")
+    //
+    // for(let i =0; i<$list.length; i++){
+    //     for문 안에서 eventlistener를 주는 것은 메모리를 잡아먹는다. 안 좋은 코드.
+    //     $list[i].addEventListener("click", function(e){
+    //         if(e.target.childNodes.length != 1){
+    //             alert(`${e.target.childNodes[0].textContent}`);
+    //         }
+    //     })
+    // }
+
+    //propagation
+    const $propagation = document.querySelector('.propagation_btn');
+	$propagation.addEventListener('click', (e) => {
+	    alert('clicked');
+	    e.stopPropagation();
+	});
+	
+	document.body.addEventListener('click', () => {
+	    alert('event still alive!');
+	});
 </script>
 </html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+</body>
+<script>
+    //객체란?
+    const me = {
+        name : '임희래',
+        address : '서울시 서대문구',
+        pat : function(daggori){
+        daggori.happyFeelings();
+        }
+    }
+
+    const daggori = {
+        happy : 0,
+        happyFeelings : function(){
+            this.happy++;
+        }
+    }
+
+    me.pat(daggori);
+
+    console.log(daggori.happy);
+
+    //음식 메뉴 호출 생성자
+    let food = ['짜장면', '짬뽕', '탕수육', '깐풍기', '팔보채']
+
+    function LunchMenu1(food){
+        this.food = food;
+        this.todayMenu = function(){
+            console.log(`오늘의 점심 메뉴는 ${this.food[parseInt(Math.random()*this.food.length)]}입니다.`);
+        }
+    }
+
+    let lunchmenu1 = new LunchMenu1(food);
+
+    lunchmenu1.todayMenu();
+
+    //prototype을 이용한 메모리 낭비 방지
+    function LunchMenu2(food){
+        this.food = food;
+    }
+
+    LunchMenu2.prototype.todayMenu = function(){
+        console.log(`오늘의 점심 메뉴는 ${this.food[parseInt(Math.random()*this.food.length)]}입니다.`);
+    }
+
+    let lunchmenu2 = new LunchMenu2(food);
+
+    console.log(lunchmenu.todayMenu());
+
+    //비교해보기
+    function NewFactory2(name){
+        this.name = name;
+    }
+
+    NewFactory2.prototype.sayYourName = function(){
+        console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+    }
+
+    const newbot1 = new NewFactory2('재현');
+
+    newbot1.name
+
+    newbot1.sayYourName()
+
+    const newbot2 = new NewFactory2('브랜든');
+
+    newbot2.name;
+
+    newbot2.sayYourName();
+
+    newbot1.sayYourName() === newbot2.sayYourName();
+
+    //상속
+
+    function Parent(){
+        this.name = '희래';
+    }
+
+    Parent.prototype.rename = function(name){
+        this.name = name;
+    }
+
+    Parent.prototype.sayName = function(){
+        console.log(this.name)
+    }
+    
+    function Child(){
+        Parent.call(this);
+    }
+
+    Child.prototype = Object.create(Parent.prototype);
+
+    Child.prototype.canWalk = function(){
+        console.log('now i can walk!!');
+    }
+
+    let child = new Child();
+
+    child.sayName();
+    child.canWalk();
+
+    //class로 해보자
+
+    class Robot{
+        constructor(name){
+            this.name = name;
+        }
+        sayYourName(){
+            console.log(`제 이름은 ${this.name}입니다.`);
+        }
+    }
+
+    const robot = new Robot('희래');
+
+    class Me{
+        constructor(name, address, age){
+            this.name = name;
+            this.address = address;
+            this.age = age;
+        }
+        Pat(daggori){
+            daggori.HappyFeelings();
+        }
+    }
+
+    class Daggori{
+        constructor(happy){
+            this.happy = happy;
+        }
+        HappyFeelings(){
+            this.happy++;
+        }
+    }
+
+    const me2 = new Me('희래', '서울', 25);
+
+    const daggori2 = new Daggori(0);
+
+    me2.Pat(daggori2);
+
+    daggori2.happy;
+
+    // 모듈 패턴이라고 합니다.
+    function Person() {
+        let age = 15;
+        return {
+            getAge: function () { return age },
+            setAge: function (data) { age = data }
+        }
+    }
+    const person = Person();
+    console.log(person.getAge());
+    console.log(person.age);
+    person.setAge(40);
+    console.log(person.getAge());
+
+    // 사용자 정의 타입 패턴
+    function PersonType() {
+        this.age = 35;
+    }
+    
+    PersonType.prototype.getAge = function () {
+        return this.age
+    }
+
+    const person2 = new PersonType();
+    console.log(person2.getAge());
+
+     // 모듈 + 사용자 정의 타입 혼합 패턴. 비공개 변수를 포함한 타입을 생성할때 사용
+     function PersonType2() {
+         let age = 25;
+     
+         function innerPersonType() { }
+     
+         innerPersonType.prototype.getAge = function () {
+             return age;
+         }
+     
+         return innerPersonType;
+    }
+
+    const Person3 = PersonType2();
+    const person3 = new Person3();
+    console.log(person3.getAge());
+
+    const PersonType3 = (
+        function () {
+            let age = 15;
+
+            function innerPersonType() { }
+
+            innerPersonType.prototype.getAge = function () {
+                return age;
+            }
+
+            return innerPersonType;
+        }
+    )();
+
+    const personWithSecret = new PersonType3();
+    console.log(personWithSecret.getAge());
+
+    //동적 스코프
+    // sub add {
+    //     $balance += shift;
+    // }
+
+    // sub transaction_a {
+    //     local $balance = 0;
+    //     say add(1);
+    //     transaction_b();
+    //     say add(100);
+    // }
+
+    // sub transaction_b {
+    //     local $balance = 5;
+    //     say add(10);
+    // }
+</script>
+</html>
