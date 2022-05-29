@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구현</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    const root = document.getElementById("root");
+    async function getProductData(){
+        const response = await fetch('http://test.api.weniv.co.kr/mall');
+        const product = await response.json();
+        return product;
+    }
+
+    getProductData().then(product => {
+        // console.log(product)
+        const mainEl = document.createElement('main');
+        mainEl.classList.add("product");
+        // mainEl.innerHTML = `
+        //     <h1 class='ir'>상품목록 페이지</h1>
+        //     <ul class="product-list"></ul>
+        // ` 감점요소다.
+        const prodctPageHeader = document.createElement("h1");
+        prodctPageHeader.setAttribute("class", "ir");
+        prodctPageHeader.innerText = "상품목록 페이지";
+        mainEl.appendChild(prodctPageHeader);
+
+        const productList = document.createElement("ul");
+        productList.setAttribute("class", "product-list");
+        mainEl.appendChild(productList);
+        // console.log(mainEl)
+        product.forEach((item) => {
+            const productDetailLink = document.createElement('a');
+            productDetailLink.href = `/detail/${item.id}`;
+            productDetailLink.innerHTML = `
+                <li class="product-item">
+                    <div class="product-img">
+                        <img src="http://test.api.weniv.co.kr/${item.thumbnailImg}">
+                    </div>
+                    <strong class="product-name">
+                        ${item.productName}
+                    </strong>
+                    <br>
+                    <div class="product-price">
+                        <strong class="price m-price">${item.price}<span>원</span></strong>
+                    </div>
+                </li>
+            `
+            productList.append(productDetailLink)
+        });
+        const cart = document.createElement('a')
+        cart.setAttribute('class', 'link-btn cart-link')
+        mainEl.append(cart);
+
+        root.append(mainEl);
+    })
+</script>
+</html>
