@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box</title>
+    <style>
+        .start{
+            z-index: 0;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(191, 252, 232);
+            border: 5px solid blue;
+            font-size: 10px;
+            text-align: center;
+            position: absolute;
+        }
+        .finish{
+            position: absolute;
+            z-index: 0;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(191, 252, 232);
+            border: 5px solid blue;
+            font-size: 10px;
+            text-align: center;
+            transform: translateX(500px) translateY(500px);
+        }
+        .box{
+            position: absolute;
+            z-index: 10;
+            width: 25px;
+            height: 25px;
+            background-color: aquamarine;
+            transition: 0.2s;
+            transform: translateX(5px) translateY(5px);
+        }
+        </style>
+</head>
+<body>
+    <div class="start">start!</div>
+    <div class="finish">finish!</div>
+    <div class="box"></div>
+</body>
+<script>
+    const $box = document.querySelector('.box');
+    const $finish = document.querySelector('.finish');
+    let row = 5;
+    let column = 5;
+
+    document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight'){
+            row += 5;
+            $box.style.transform = `translateX(${row}px) translateY(${column}px)`;
+        }
+        if(e.key === 'ArrowLeft'){
+            row -= 5;
+            $box.style.transform = `translateX(${row}px) translateY(${column}px)`;
+        }
+        if(e.key === 'ArrowUp'){
+            column -= 5;
+            $box.style.transform = `translateX(${row}px) translateY(${column}px)`;
+        }
+        if(e.key === 'ArrowDown'){
+            column += 5;
+            $box.style.transform = `translateX(${row}px) translateY(${column}px)`;
+        }
+        if(document.defaultView.getComputedStyle($box).getPropertyValue("transform") === 'matrix(1, 0, 0, 1, 505, 505)'){
+            alert("well done!")
+        }
+    })
+</script>
+</html>
