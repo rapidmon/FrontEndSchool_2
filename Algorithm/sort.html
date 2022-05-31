@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sort</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let li_1 = [199,22,33,12,32,64,72,222,233]
+    let sorted_1 =[]
+    let li_length_1 = li_1.length;
+    for(let i =0; i<li_length_1; i++){
+        let minimum = Math.min(...li_1);
+        sorted_1.push(minimum);
+        li_1.splice(li_1.indexOf(minimum), 1)
+    }
+
+    // while length가 필요없음.
+    let li_2 = [199,22,33,12,32,64,72,222,233]
+    let sorted_2 =[]
+    while(!!li_2.toString()){
+        let minimum = Math.min(...li_2)
+        sorted_2.push(minimum);
+        li_2.splice(li_2.indexOf(minimum), 1)
+    }
+
+    //선택정렬 메소드 최소화
+    let li = [199,22,33,12,32,64,72,222,233]
+    let sorted =[]
+    let li_length = li.length;
+
+    function sellectionSort(arr){
+        for (let i=0; i<arr.length; i++){
+            let min_index = i;
+            for(let j=i+1; j<arr.length; j++){
+                if(arr[min_index] > arr[j]){
+                    min_index = j;
+                }
+            }
+            let temp = arr[min_index];
+            arr[min_index] = arr[i];
+            arr[i] = temp;
+        }
+        return arr;       
+    }
+
+    sellectionSort(li)
+
+    //삽입정렬
+
+    function insertIndex(arr, value){
+        for(const i in arr){
+            if(value<arr[i]){
+                return i;
+            }
+        }
+        return arr.length;
+    }
+
+    function insertSort(arr){
+        let sorted_arr = [];
+
+        while(arr.length != 0){
+            let [value, ...arr2] = arr;
+            arr = arr2
+
+            let index = insertIndex(sorted_arr, value);
+
+            sorted_arr.splice(index, 0, value);
+        }
+        return sorted_arr;
+    }
+    
+    const arr = [199,22,33,12,32,64,72,222,233];
+    insertSort(arr);
+
+    //병합정렬
+    let enter = [5, 10, 66, 77, 54, 32, 11, 15];
+
+    function mergeSort(arr){
+        let long = arr.length;
+        let result = []
+        if(long <= 1){
+            return arr;
+        }
+        let center = parseInt(long/2);
+        let group_1 = mergeSort(arr.slice(0,center));
+        let group_2 = mergeSort(arr.slice(center));
+
+        while(group_1.length != 0 && group_2.length != 0){
+            if(group_1[0] < group_2[0]){
+                result.push(group_1.shift());
+            } else{
+                result.push(group_2.shift());
+            }
+        }
+
+        while(group_1.length != 0){
+            result.push(group_1.shift());
+        }
+
+        while(group_2.length != 0){
+            result.push(group_2.shift());
+        }
+        return result;
+    }
+
+    mergeSort(enter)
+
+    //quickSort
+    let qs = [66, 77, 54, 32, 10, 5, 11, 15];
+       
+    function quickSort(arr){
+        let long = arr.length;
+        
+        if(long <= 1){
+            return arr;
+        }
+
+        const pivot = [arr.shift()];
+        const group_1 = []
+        const group_2 = []        
+        
+        for(let i in arr){
+            if(arr[i] < pivot){
+                group_1.push(arr[i]);
+            } else{
+                group_2.push(arr[i]);
+            }
+        }
+
+        return quickSort(group_1).concat(pivot, quickSort(group_2))
+    }
+
+    quickSort(qs)
+</script>
+</html>

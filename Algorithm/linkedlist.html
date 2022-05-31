@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linkedlist</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //linked list 구현
+    const list = {
+        head : {
+            value : 90,
+            next : {
+                value : 2,
+                next : {
+                    value : 77,
+                    next : {
+                        value : 35,
+                        next : {
+                            value : 21,
+                            next : null
+                        }
+                    }
+                }
+            } 
+        }
+    }
+
+    list.head.next.next.next.value; // 35
+
+    //class로 하는 linked list
+    class Node {
+        constructor(data, next){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    let node1 = new Node(10)
+    let node2 = new Node(20)
+    let node3 = new Node(30)
+
+    node1.data
+    node1.next = node2;
+    node2.next = node3;
+    node1.next.next.data //30
+
+    //linked list 중급 구현
+    class Node {
+        constructor(data){
+            this.data = data;
+            this.pre = null;
+            this.next = null;
+        }
+    }
+
+    // head -> ['init', next] -> tail
+    class DoubleLinkedlist{
+        constructor(){
+            let init = new Node('init')
+            this.head = init
+            this.tail = init
+            this.data_length = 0
+            // this.visualization = [];
+        }
+
+        length(){
+            return this.data_length;
+        }
+
+        toString(){
+            // return `[${this.visualization}]`;
+            let roundabout = this.head;
+            roundabout = roundabout.next;
+
+            let visualization = ''
+            for(let i =0; i<this.data_length; i++){
+                visualization += `${roundabout.data}, `;
+                roundabout = roundabout.next;
+            }
+            return `[${visualization.slice(0, -2)}]`
+        }
+
+        //data를 얻기 위한 메서드, data를 넣기 위한 메서드는 getter와 setter사용을 권고합니다.
+        fullData(){
+            return JSON.parse(this.toString())
+        }
+
+        append(data){
+            let newNode = new Node(data);
+            // this.visualization.push(data);
+            this.tail.next = newNode;
+            newNode.pre = this.tail;
+            this.tail = newNode;
+            this.data_length += 1
+        }
+
+        insert(index, data){
+            let roundabout = this.head;
+            roundabout = roundabout.next;
+
+            for(let i = 0; i < index-1; i++){
+                roundabout = roundabout.next;
+            }
+
+            let insertNode = new Node(data);
+
+            insertNode.next = roundabout.next;
+            roundabout.next = insertNode;
+            this.data_length += 1;
+        }
+    }
+
+    let linkedlist = new DoubleLinkedlist();
+    linkedlist.append(1);
+    linkedlist.append(2);
+    linkedlist.append(3);
+    linkedlist.append(10);
+    linkedlist.append(20);
+    linkedlist.append(30);
+
+    linkedlist.length();
+
+    linkedlist.toString();
+
+    linkedlist.fullData();
+
+    linkedlist.insert(3, 1000);
+
+</script>
+</html>
