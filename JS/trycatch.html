@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trycatch</title>
+</head>
+<body>
+    
+</body>
+<script>
+    try {
+        let x = 10;
+        let y = 10;
+        throw new SyntaxError('문법 애러야!')
+        console.log(x + y + z)
+        
+    } catch(e) {
+        console.error(e)
+        console.error(e.message)
+    } finally {
+        console.log('end')
+    }
+</script>
+</html>

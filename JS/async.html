@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let snack = async function() {
+    //     return "cake!";
+    // };
+
+    // snack
+    // // async ƒ () {
+    // // 		return "cake!";
+    // // }
+    // snack()
+    // // Promise {<fulfilled>: 'cake!'}
+    // // async => Promise
+
+    // fetch => Promise 즉 비동기.
+    // const f = fetch('https://raw.githubusercontent.com/paullabkorea/coronaVaccinationStatus/main/data/data.json').then(function(response) {
+    //     return response.json();
+    // }).then(function(json) {
+    //     console.log(json);
+    //     return json;
+    // })
+
+    // const snack = () => Promise.resolve('와, 맛있겠다!')
+
+    // async function mySnack() {
+    //     console.log('치즈 케이크 주세요!') // 3번
+    //     const res = await snack() // 4번
+    //     console.log(res) // 6번
+    // }
+
+    // console.log('주문하시겠어요?') // 1번
+    // mySnack(); // 2번
+    // console.log('주문하신 케이크 나왔습니다!') // 5번
+
+    const f = fetch('https://raw.githubusercontent.com/paullabkorea/coronaVaccinationStatus/main/data/data.json').then(function(response) {
+            return response.json(); // 4번
+        }).then(function(json) {
+            console.log(json); // 5번
+            return json
+        })
+    console.log(f) // 1번
+    console.log(1); // 2번
+    console.log(2); // 3번
+
+    function cook(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    const myCake = async () => {
+        await cook(3000);
+        return '케이크';
+    };
+
+    const myCoffee = async () => {
+        await cook(2000);
+        return '커피';
+    };
+    const myCookie = async () => {
+        await cook(5000);
+        return '쿠키';
+    };
+
+    async function asyncProcess() {
+        const cake = await myCake();
+        console.log(cake);
+        const coffee = await myCoffee();
+        console.log(coffee);
+        const cookie = await myCookie();
+        console.log(cookie);
+    }
+
+    asyncProcess();
+</script>
+</html>

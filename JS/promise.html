@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let p = new Promise(function(resolve, reject) {
+    //     resolve('hello world');
+    //     // reject('hello world');
+    //     }).then(m => {
+    //         alert(m);
+    //         throw Error("에러 발생!")
+    //         return m.split(' ')[0]
+    //     }).then(m => {
+    //         alert(m);
+    //         return m[0]
+    //     }).then(m => {
+    //         alert(m);
+    //     }).catch(m => {
+    //         alert('catch 실행!! :' + m);
+    //     });
+
+    // let p2 = new Promise(function(resolve, reject) {
+    //     setTimeout(() => reject("끝남!"), 3000);
+    // }).then(m=>{
+    //     alert(m);
+    // }).catch(m=>{
+    //     alert('error! error!')
+    // });
+    // console.log('hello world');
+    // console.log(p2);
+    // //promise {pending}
+    // // 3초 후
+    // console.log(p2);
+    // //promise {fullfilled}
+
+    // new Promise(function(resolve, reject) {
+    //     setTimeout(() => reject('error'), 5000);
+    // }).then(function(result) {
+    //     alert(result + ' : 잘 수행!');
+    //     return result + 'one';
+    // }).catch(function(result) {
+    //     alert(result + ' : 애러 발생!'); // 1
+    //     return result + 'two';
+    // }).then(function(result) {
+    //     alert(result + ' : 잘 수행!'); // 2
+    //     return result + 'three';
+    // });
+
+    let p = new Promise(function(resolve, reject) {
+        setTimeout(() => resolve(1), 10000); // (*) 
+    });
+
+    console.log('hello world');
+    
+    let p2 = p.then(function(result) { // (**)
+        console.log(result); // 1
+        return result * 2;
+    });
+
+    console.log('hello world2');
+
+    let p3 = p2.then(function(result) { // (***)
+        console.log(result); // 2
+        return result * 2;
+    });
+
+    console.log('hello world3');
+    
+    let p4 = p3.then(function(result) {
+        console.log(result); // 4
+        return result * 2;
+    });
+</script>
+</html>
