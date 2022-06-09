@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // root라는 id를 가진 개체 소환.
+    const $root = document.getElementById("root");
+
+    // div클래스 생성 후 root의 자식요소로 추가.
+    const container = document.createElement("div");
+    container.setAttribute("class", "container");
+    $root.appendChild(container);
+
+    // h1 생성 후 div의 자식요소로 추가.
+    const ir = document.createElement("h1");
+    ir.setAttribute("class", "ir");
+    ir.innerText = "테스트 페이지";
+    container.appendChild(ir)
+
+    // section 생성 후 div의 자식요소로 추가.
+    const section = document.createElement("section");
+    container.appendChild(section);
+
+    // h2 생성 후 section의 자식요소로 추가.
+    const section_title = document.createElement("h2");
+    section_title.setAttribute("class", "section-title");
+    section_title.innerText = "섹션제목";
+    section.appendChild(section_title);
+
+    // img 생성 후 section의 자식요소로 추가.
+    const section_img = document.createElement("img");
+    section_img.setAttribute("class", "section-img");
+    section_img.setAttribute("src", "img.jpg");
+    section_img.setAttribute("alt", "섹션이미지");
+    section.appendChild(section_img);
+
+    // p 생성 후 section의 자식요소로 추가.
+    const section_contents = document.createElement("p");
+    section_contents.setAttribute("class", "section-contents");
+    section_contents.innerText = "내용";
+    section.appendChild(section_contents);
+</script>
+</html>
